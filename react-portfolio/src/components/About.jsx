@@ -1,4 +1,3 @@
-// src/components/About.jsx
 export default function About() {
   return (
     <section id="about" className="flex flex-col-reverse md:flex-row items-center gap-8 py-12">
