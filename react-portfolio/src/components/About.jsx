@@ -4,7 +4,7 @@ export default function About() {
       <div className="flex-1"> 
         <h1 className="text-4xl md:text-5xl font-bold leading-tight">
           Full-Stack Developer <br />
-          <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">MERN Stack Specialist</span>
+          <span className="bg-linear-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">MERN Stack Specialist</span>
         </h1>
         <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
           I build accessible, responsive, and user-friendly web applications using modern technologies like React, Node.js, and Tailwind CSS.
@@ -27,7 +27,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-indigo-200 dark:border-indigo-800 flex-shrink-0 shadow-lg">
+      <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-indigo-200 dark:border-indigo-800 shrink-0 shadow-lg">
         <img src="/profile.jpeg" alt="Justin Gerald Loleng" className="w-full h-full object-cover" />
       </div>
     </section>

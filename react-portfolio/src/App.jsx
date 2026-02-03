@@ -5,46 +5,43 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    // Initialize from localStorage or system preference
+    const saved = localStorage.getItem('theme')
+    if (saved) return saved === 'dark'
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  })
 
   useEffect(() => {
-    setMounted(true)
-   
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!mounted) return
-    
-    
+    const root = document.documentElement
     if (isDark) {
-      document.documentElement.classList.add('dark')
+      root.classList.add('dark')
       localStorage.setItem('theme', 'dark')
     } else {
-      document.documentElement.classList.remove('dark')
+      root.classList.remove('dark')
       localStorage.setItem('theme', 'light')
     }
-  }, [isDark, mounted])
+  }, [isDark])
 
   const toggleDarkMode = () => setIsDark(!isDark)
-
-  if (!mounted) return null
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
       <header className="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
-        <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">Justin Gerald Loleng</h2>
+        <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+          Justin Gerald Loleng
+        </h2>
         <nav className="flex items-center gap-8">
           <div className="space-x-8 text-sm font-medium">
-            <a href="#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</a>
-            <a href="#projects" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
-            <a href="#contact" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+            <a href="#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              About
+            </a>
+            <a href="#projects" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              Projects
+            </a>
+            <a href="#contact" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              Contact
+            </a>
           </div>
           <button
             onClick={toggleDarkMode}
